@@ -1,13 +1,12 @@
-API Conventions
+API 约定规范
 ===============
 
-Updated: 3/7/2017
+更新于: 3/7/2017
 
-*This document is oriented at users who want a deeper understanding of the
-Kubernetes API structure, and developers wanting to extend the Kubernetes API.
-An introduction to using resources with kubectl can be found in [the object management overview](https://kubernetes.io/docs/tutorials/object-management-kubectl/object-management/).*
+*本文档面向希望更深入理解 Kubernetes API 结构，以及希望扩展Kubernetes API的开发人员。
+如何通过 kubectl 查看以及操作 k8s 资源， 可以参考这篇文档  [the object management overview](https://kubernetes.io/docs/tutorials/object-management-kubectl/object-management/).*
 
-**Table of Contents**
+**目录**
 
 
   - [Types (Kinds)](#types-kinds)

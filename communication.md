@@ -1,1 +1,1 @@
-**NOTE:** This document has moved to [a new location](communication/).
+**注意:** 文档已移至 [新位置](communication/).

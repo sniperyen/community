@@ -1,78 +1,72 @@
 # Table of Contents
 
-The developer guide is for anyone wanting to either write code which directly accesses the
-Kubernetes API, or to contribute directly to the Kubernetes project.
-It assumes some familiarity with concepts in the [User Guide](http://kubernetes.io/docs/user-guide/) and the [Cluster Admin
-Guide](http://kubernetes.io/docs/admin/).
+这篇开发指南，适用于任何想要编写直接调用Kubernetes API的代码，或直接为 Kubernetes 项目做出贡献的人。
+它假设您有一些熟悉的概念[User Guide](http://kubernetes.io/docs/user-guide/) 和 [集群操作指南](http://kubernetes.io/docs/admin/).
+
+## 为Kubernetes项目开发和贡献代码的过程
+
+* **贡献者指南**
+  ([请从这里开始](/contributors/guide/README.md)) 了解如何为Kubernetes做出贡献
+
+* **GitHub问题** ([issues.md](issues.md)): 新创建的问题如何分类。
+
+* **pr 流程** ([/contributors/guide/pull-requests.md](/contributors/guide/pull-requests.md)): pr 什么时候以及为什么关闭。
+
+* **获取最近的构建** ([getting-builds.md](getting-builds.md)): 如何获取最新版本，包括通过CI的最新版本。
+
+* **自动化工具** ([automation.md](automation.md)): 我们的github仓库上运行的自动化。
 
 
-## The process of developing and contributing code to the Kubernetes project
+## 设置开发环境，编码和调试
 
-* **Contributor Guide**
-  ([Please start here](/contributors/guide/README.md)) to learn about how to contribute to Kubernetes
+* **Development Guide** ([development.md](development.md)): 设置开发环境。
 
-* **GitHub Issues** ([issues.md](issues.md)): How incoming issues are triaged.
+* **Testing** ([testing.md](testing.md)): 如何在开发环境中运行单元，集成和端到端测试。
 
-* **Pull Request Process** ([/contributors/guide/pull-requests.md](/contributors/guide/pull-requests.md)): When and why pull requests are closed.
+* **Hunting flaky tests** ([flaky-tests.md](flaky-tests.md)): 我们的目标是99.9％覆盖测试。以下是如何多次运行测试。
 
-* **Getting Recent Builds** ([getting-builds.md](getting-builds.md)): How to get recent builds including the latest builds that pass CI.
+* **日志约定** ([logging.md](logging.md)): Glog级别。
 
-* **Automated Tools** ([automation.md](automation.md)): Descriptions of the automation that is running on our github repository.
+* **Profiling Kubernetes** ([profiling.md](profiling.md)): 如何将 pprof profileer 添加到 k8s 中。
 
+* **如何在 k8s 中添加监控**
+  ([instrumentation.md](instrumentation.md)): 如何在 k8s 中添加监控
 
-## Setting up your dev environment, coding, and debugging
+* **编码约定** ([coding-conventions.md](../guide/coding-conventions.md)):
+  为贡献者提供编码风格建议。
 
-* **Development Guide** ([development.md](development.md)): Setting up your development environment.
+* **文档约定** ([how-to-doc.md](how-to-doc.md))
+  为贡献者提供文档风格建议。
 
-* **Testing** ([testing.md](testing.md)): How to run unit, integration, and end-to-end tests in your development sandbox.
+* **在本地运行集群** ([running-locally.md](running-locally.md)):
+  用于开发的快速轻量级本地群集部署。
 
-* **Hunting flaky tests** ([flaky-tests.md](flaky-tests.md)): We have a goal of 99.9% flake free tests.
-  Here's how to run your tests many times.
+## 调用 Kubernetes API 进行开发
 
-* **Logging Conventions** ([logging.md](logging.md)): Glog levels.
+* 这篇 [REST API 文档](http://kubernetes.io/docs/reference/) 描述了 apiserver 暴露出的 REST
+  API.
 
-* **Profiling Kubernetes** ([profiling.md](profiling.md)): How to plug in go pprof profiler to Kubernetes.
-
-* **Instrumenting Kubernetes with a new metric**
-  ([instrumentation.md](instrumentation.md)): How to add a new metrics to the
-  Kubernetes code base.
-
-* **Coding Conventions** ([coding-conventions.md](../guide/coding-conventions.md)):
-  Coding style advice for contributors.
-
-* **Document Conventions** ([how-to-doc.md](how-to-doc.md))
-  Document style advice for contributors.
-
-* **Running a cluster locally** ([running-locally.md](running-locally.md)):
-  A fast and lightweight local cluster deployment for development.
-
-## Developing against the Kubernetes API
-
-* The [REST API documentation](http://kubernetes.io/docs/reference/) explains the REST
-  API exposed by apiserver.
-
-* **Annotations** ([Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/)): are for attaching arbitrary non-identifying metadata to objects.
+* **注释** ([Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/)): are for attaching arbitrary non-identifying metadata to objects.
   Programs that automate Kubernetes objects may use annotations to store small amounts of their state.
 
-* **API Conventions** ([api-conventions.md](api-conventions.md)):
-  Defining the verbs and resources used in the Kubernetes API.
+* **API 约定** ([api-conventions.md](api-conventions.md)):
+  定义了 Kubernetes API 用到的别名和资源.
 
 * **API Client Libraries** ([client-libraries.md](client-libraries.md)):
-  A list of existing client libraries, both supported and user-contributed.
+  一组已有的 client 列表, 包含 k8s 自带的和贡献者提供的。
 
 
-## Writing plugins
+## 编写插件
 
-* **Authentication** ([Authentication](http://kubernetes.io/docs/admin/authentication/)):
-  The current and planned states of authentication tokens.
+* **验证** ([验证](http://kubernetes.io/docs/admin/authentication/)):
+  当前的，以及已经在计划中的验证策略。
 
-* **Authorization Plugins** ([Authorization](http://kubernetes.io/docs/admin/authorization/)):
-  Authorization applies to all HTTP requests on the main apiserver port.
-  This doc explains the available authorization implementations.
+* **授权插件** ([授权](http://kubernetes.io/docs/admin/authorization/)):
+授权适用于主 apiserver 的所有HTTP请求。本文档解释了可用的授权实现。
 
-* **Admission Control Plugins** ([admission_control](/contributors/design-proposals/api-machinery/admission_control.md))
+* **Admission 控制插件** ([admission_control](/contributors/design-proposals/api-machinery/admission_control.md))
 
 
-## Building releases
+## 创建新版本
 
-See the [kubernetes/release](https://github.com/kubernetes/release) repository for details on creating releases and related tools and helper scripts.
+到 [kubernetes/release](https://github.com/kubernetes/release) 仓库查看相关工具和文档。
